@@ -1,2 +1,2 @@
 # Robot-vs-Dino
-dCC
+dCC Project #2 - Robots vs Dinosaurs
