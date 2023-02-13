@@ -8,5 +8,5 @@ class Robot:
         self.health = 200
         self.active_weapon = Weapon(weapon_name)
     
-    def attack (self, dino):
-        print(f'{self.name} attacks {dino} with {self.active_weapon.name} for {self.active_weapon.attack_power} damage')
+    def attack (self):
+        print(f'{self.name} attacks with {self.active_weapon.name} for {self.active_weapon.attack_power} damage')
