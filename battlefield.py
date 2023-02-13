@@ -8,10 +8,8 @@ class Battlefield:
         self.dino = Dino(dino_name)
 
     def run_game (self):
-        pass
         self.display_welcome()
         self.battle_phase()
-        self.display_winner()
 
     def display_welcome (self):
         print(f"""
@@ -25,22 +23,23 @@ class Battlefield:
 
     def battle_phase (self):
         
-        while self.robot.health > 0:
-            self.robot.attack()
+        while self.robot.health > 0 or self.dino.health > 0:
+            self.robot.attack() 
             self.dino.health -= self.robot.active_weapon.attack_power
             print(f"{self.dino.name} now has {self.dino.health} health.")
         
-        while self.dino.health > 0:
             self.dino.attack()
             self.robot.health -= self.dino.attack_power
             print(f"{self.robot.name} now has {self.robot.health} health.")
 
+            if self.robot.health <= 0:
+                self.display_winner()
+                print(f"The {self.dino.name} is our champion!")
+                break
+            elif self.dino.health <= 0:
+                self.display_winner()
+                print(f"The {self.robot.name} is our champion!")
+                break
 
     def display_winner (self):
-        print(f"We have a winner! ___ is the last warrior standing!")
-
-
-battlefield_one = Battlefield("Mecha Godzilla", "Mecha Sword", "Triceratops")
-
-battlefield_one.battle_phase()
-print("Testing")
+        print(f"We have a winner!")
